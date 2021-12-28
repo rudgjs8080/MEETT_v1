@@ -8,6 +8,13 @@ spring:
     suffix: .html
     cache: false
 
+  mvc:
+    static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations: classpath:static/
+      add-mappings: true
+
   jpa:
     database-platform: "org.hibernate.dialect.MySQL8Dialect"
     database: mysql
