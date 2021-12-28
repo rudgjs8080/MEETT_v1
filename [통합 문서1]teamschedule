@@ -1,0 +1,28 @@
+Caused by: org.springframework.beans.factory.BeanCreationException: 
+Error creating bean with name 'roomRepository' defined in com.team.meett.repository.RoomRepository defined in 
+@EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: 
+Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: 
+Could not create query for public abstract com.team.meett.model.Room com.team.meett.repository.RoomRepository.findByUsernameAAndTeamId(java.lang.String,java.lang.String)! Reason: 
+Failed to create query for method public abstract com.team.meett.model.Room com.team.meett.repository.RoomRepository.findByUsernameAAndTeamId(java.lang.String,java.lang.String)! No property a found for type String! Traversed path: Room.username.; nested exception is java.lang.IllegalArgumentException: Failed to create query for method public abstract com.team.meett.model.Room com.team.meett.repository.RoomRepository.findByUsernameAAndTeamId(java.lang.String,java.lang.String)! No property a found for type String! Traversed path: Room.username.
+
+// room delete error
+
+2021-12-13 13:32:47.859  WARN 11536 --- [nio-8080-exec-3] .c.j.MappingJackson2HttpMessageConverter : 
+Failed to evaluate Jackson deserialization for type 
+[[simple type, class com.team.meett.model.Users]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot handle managed/back reference 'defaultReference': back reference type (`java.util.List<com.team.meett.model.UserSchedule>`) not compatible with managed type (com.team.meett.model.UserSchedule)
+2021-12-13 13:32:47.860  WARN 11536 --- [nio-8080-exec-3] .c.j.MappingJackson2HttpMessageConverter : Failed to evaluate Jackson deserialization for type [[simple type, class com.team.meett.model.Users]]: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot handle managed/back reference 'defaultReference': back reference type (`java.util.List<com.team.meett.model.UserSchedule>`) not compatible with managed type (com.team.meett.model.UserSchedule)
+2021-12-13 13:32:47.861  WARN 11536 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/json;charset=UTF-8' not supported]
+
+java.lang.IllegalStateException: Ambiguous handler methods mapped for '/meett/group/tester0': 
+{public org.springframework.http.ResponseEntity com.team.meett.controller.RoomController.selectTeam(java.lang.String), 
+public org.springframework.http.ResponseEntity com.team.meett.controller.RoomController.selectUser(java.lang.String)}
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:432) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:383) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:125) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:67) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:498) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1261) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1043) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.13.jar:5.3.13]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.13.jar:5.3.13]
