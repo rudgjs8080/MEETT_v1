@@ -10,7 +10,7 @@ import com.team.meett.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class RoomController {
     protected final TeamService teamService;
     protected final UserService userService;
 
-    protected final PasswordEncoder passwordEncoder;
+//    protected final PasswordEncoder passwordEncoder;
 
     @GetMapping("/{username}")
     public ResponseEntity<?> selectTeam(@PathVariable String username){
@@ -101,9 +101,9 @@ public class RoomController {
         //log.debug(password);
         // 암호화된 비밀번호 복호화 확인
         TeamResponseDto responseDto = teamService.findById(teamId).orElseThrow(()->new IllegalArgumentException(teamId));
-        if(!passwordEncoder.matches(password, responseDto.getPassword())){
-            return ResponseEntity.badRequest().body("비밀번호 불일치");
-        }
+//        if(!passwordEncoder.matches(password, responseDto.getPassword())){
+//            return ResponseEntity.badRequest().body("비밀번호 불일치");
+//        }
         return ResponseEntity.ok().body("비밀번호 일치");
     }
 }

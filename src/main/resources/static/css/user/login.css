@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+div,
+form {
+    /* border: 1px solid red; */
+}
+.loginLayout {
+    display: flex;
+    height: 100vh;
+}
+
+.loginImg {
+    flex: 1;
+    position: relative;
+}
+
+.loginImg img {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 43rem;
+}
+
+.loginBox {
+    flex: 0.8;
+    position: relative;
+}
+.loginForm {
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    right: 12%;
+    text-align: center;
+}
+
+.loginForm h1 {
+    margin-bottom: 30px;
+}
+
+.loginForm a {
+    color: #6e64fb;
+    text-decoration-line: underline;
+}
+
+.loginForm a:hover {
+    cursor: pointer;
+    font-weight: bolder;
+}
+.loginBox input {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.loginBox button {
+    width: 50%;
+    height: 46px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    background-color: #6e64fb;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.loginBox button:hover {
+    background: rgb(110, 100, 251);
+    background: radial-gradient(
+            circle,
+            rgba(110, 100, 251, 1) 0%,
+            rgba(215, 78, 249, 1) 100%
+    );
+}

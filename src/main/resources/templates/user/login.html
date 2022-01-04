@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:href="@{/static/css/user/login.css}" rel="stylesheet" type="text/css" media="screen">
+</head>
+<style th:inline="text">
+    .loginLayout {
+        background: url([[@{/static/img/user/waves.svg}]]) no-repeat fixed;
+        background-size: cover;
+        position: sticky;
+    }
+</style>
+<body>
+<div class="loginLayout">
+    <div class="loginImg">
+        <img th:src="@{/static/img/user/login.svg}" alt="main" src=""/>
+    </div>
+    <div class="loginBox">
+        <div class="loginForm">
+            <h1>LOGIN</h1>
+            <form action="/meett/user/login" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <input placeholder="ID" name="username"/>
+                <br />
+                <input placeholder="password" name="password"/>
+                <br />
+                <button>Login</button>
+            </form>
+            <a th:onclick="|location.href='@{/user/register}'|">회원이 아니신가요?</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
