@@ -3,7 +3,7 @@ package com.team.meett.dto;
 import com.team.meett.model.Team;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 //PUT, POST 요청에 대해
 @Getter

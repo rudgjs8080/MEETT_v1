@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MEETT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:href="@{/static/css/user/main.css}" rel="stylesheet" type="text/css" media="screen">
+</head>
+<style>
+    .mainLayout {
+        background: url(static/img/user/waves.svg) no-repeat fixed;
+        background-size: cover;
+        position: sticky;
+    }
+</style>
+<body>
+<div class="mainLayout">
+    <div class="titleLayout">
+        <div class="appLogo">TTEEM</div>
+        <div class="textBox">
+            <h1>SMART</h1>
+            <h1>TEAM SCHDULER</h1>
+            <br/>
+            <br/>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore
+                cum sit tempora voluptates quasi praesentium hic. Ipsum, ex sint
+                laboriosam quas esse atque rem, cum eligendi quidem explicabo odit!
+                Dicta!
+            </p>
+        </div>
+        <div class="sign">
+            <button th:onclick="|location.href='@{/user/register}'|">SIGN UP FOR FREE   →</button>
+        </div>
+    </div>
+    <div class="imgLayout">
+        <div class="join">
+            <button th:onclick="|location.href='@{/user/login}'|">SIGN IN</button>
+        </div>
+        <div class="img">
+            <img th:src="@{/static/img/user/main.svg}" alt="main" src=""/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

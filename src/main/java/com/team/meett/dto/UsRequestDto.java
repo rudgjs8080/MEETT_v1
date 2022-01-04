@@ -19,16 +19,6 @@ public class UsRequestDto {
     private Date end;
     private int role;
 
-//    @Builder
-//    public UsRequestDto(String username, String title, String detail, Date start, Date end, int role){
-//        this.username = username;
-//        this.title = title;
-//        this.detail = detail;
-//        this.start = start;
-//        this.end = end;
-//        this.role = role;
-//    }
-
     public UserSchedule toEntity(){
         return UserSchedule.builder()
                 .username(username)

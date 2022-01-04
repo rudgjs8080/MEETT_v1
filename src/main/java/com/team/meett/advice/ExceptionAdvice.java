@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -57,6 +58,9 @@ public class ExceptionAdvice {
             // status 500
             response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
             response.setMessage("날짜를 parse 할 수 없습니다 값의 유무와 형식을 확인해주세요");
+        } else if(e instanceof JpaSystemException){
+            response.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            response.setMessage("cascade=\"all-delete-delete\"가 있는 컬렉션이 소유 엔티티 인스턴스에서 더 이상 참조되지 않았습니다.");
         }
 
         return ResponseEntity.status(response.getStatusCode()).body(response);
