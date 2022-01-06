@@ -41,7 +41,7 @@ public class FirstPageController {
     @PostMapping("/user/register")
     public String register(UserRequestDto users){
         userService.insert(users);
-        return "redirect:/";
+        return "user/login";
     }
 
     @GetMapping("/home")

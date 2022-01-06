@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link th:href="@{/static/css/user/main.css}" rel="stylesheet" type="text/css" media="screen">
 </head>
-<style>
+<style th:inline="text">
     .mainLayout {
-        background: url(static/img/user/waves.svg) no-repeat fixed;
+        background: url([[@{/static/img/user/waves.svg}]]) no-repeat fixed;
         background-size: cover;
         position: sticky;
     }
