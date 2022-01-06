@@ -2,27 +2,61 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
+
 div {
     /* border: 1px solid red; */
 }
+
 .joinLayout {
     display: flex;
     height: 100vh;
 }
+
+@keyframes slide-in-left {
+    0% {
+        -webkit-transform: translateX(-1000px);
+        transform: translateX(-1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .joinImg {
     flex: 1;
     position: relative;
+    animation: slide-in-left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+
 .joinImg img {
     position: absolute;
     top: 27%;
     left: 10%;
     width: 43rem;
 }
+
+@keyframes slide-in-right {
+    0% {
+        -webkit-transform: translateX(1000px);
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .joinBox {
     flex: 0.8;
     position: relative;
+    animation: slide-in-right 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate both;
 }
 
 .joinBox input {
@@ -52,6 +86,7 @@ div {
             rgba(215, 78, 249, 1) 100%
     );
 }
+
 .joinForm {
     position: absolute;
     width: 100%;
@@ -59,6 +94,7 @@ div {
     right: 7%;
     text-align: center;
 }
+
 .joinForm h1 {
     margin-bottom: 30px;
 }
