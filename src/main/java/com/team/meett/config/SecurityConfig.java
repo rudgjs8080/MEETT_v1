@@ -2,6 +2,7 @@ package com.team.meett.config;
 
 import com.team.meett.service.impl.UserServiceImplV1;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+//@AutoConfigureOrder
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserServiceImplV1 userServiceImplV1;
