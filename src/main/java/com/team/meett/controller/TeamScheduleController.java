@@ -45,7 +45,7 @@ public class TeamScheduleController {
             return "error";
         }
         model.addAttribute("tsList", tsList);
-        return "home";
+        return "teamschedule";
     }
     /**
      * 팀 스케줄의 상세내용으로 검색
@@ -71,7 +71,7 @@ public class TeamScheduleController {
             return "error";
         }
         model.addAttribute("tsDetailList", teamScheduleList);
-        return "home";
+        return "teamschedule";
     }
     /**
      * 지정한 날짜를 통해 현재 페이지의 팀의 일정을 조회하는 method
@@ -95,7 +95,7 @@ public class TeamScheduleController {
                      * 데이터는 잘 나옴
                      */
                     model.addAttribute("tsDateList", teamScheduleList);
-                    return "home";
+                    return "teamschedule";
                 } else {
                     model.addAttribute("error", "start 값이 end 값보다 큽니다");
                     return "error";
@@ -120,7 +120,7 @@ public class TeamScheduleController {
                 if(role == 0 || role == 1){
                     List<TsResponseDto> tsList= searchService.searchByTeamScheduleRole(teamId, role);
                     model.addAttribute("tsRoleList", tsList);
-                    return "home";
+                    return "teamschedule";
                 } else {
                     model.addAttribute("error", "role 값이 옳지 않습니다");
                     return "error";

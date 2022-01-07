@@ -8,7 +8,6 @@ import com.team.meett.service.UserScheduleService;
 import com.team.meett.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,16 +38,16 @@ public class UserScheduleController {
             return "error";
         }
         model.addAttribute("usList", UsList);
-        return "home";
+        return "userschedule";
     }
     /**
      * 지정한 날짜를 통해 현재 페이지의 유저의 일정을 조회하는 method
      * 날짜 하루를 조회하려면 start 와 end를 같은 값으로 보내줘야함 ex) start = 2021-12-23, end = 2021-12-23
      */
-    @GetMapping("/user/search/date")
-    public String searchUserDate(@RequestParam(value = "username", required = false) String username,
-                                            @RequestParam(value = "start", required = false) String start,
-                                            @RequestParam(value = "end", required = false) String end, Model model) throws ParseException {
+    @GetMapping("/user/search/date/{username}/{start}/{end}")
+    public String searchUserDate(@PathVariable String username,
+                                 @PathVariable String start,
+                                 @PathVariable String end, Model model) throws ParseException {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         if((username != null) && (start != null) && (end != null)){
@@ -58,7 +57,7 @@ public class UserScheduleController {
                 if(dStart.equals(dEnd) || dStart.before(dEnd)){
                     List<UserSchedule> usList = searchService.searchByUserDate(username, dStart, dEnd);
                     model.addAttribute("usDateList", usList);
-                    return "home";
+                    return "userschedule";
                 } else {
                     model.addAttribute("error", "start 값이 end 값보다 큽니다 다시 확인해주세요");
                     return "error";
@@ -75,15 +74,15 @@ public class UserScheduleController {
     /**
      * UserSchedule에서 Role 에 맞는 일정 조회
      */
-    @GetMapping("/user/search/role")
-    public String searchUserScheduleRole(@RequestParam(value = "username", required = false) String username,
-                                                    @RequestParam(value = "role", required = false) Integer role, Model model){
+    @GetMapping("/user/search/role/{username}/{role}")
+    public String searchUserScheduleRole(@PathVariable String username,
+                                         @PathVariable Integer role, Model model){
         if((username != null) && (role != null)){
             if(userService.findById(username) != null){
                 if(role == 0 || role == 1){
                     List<UsResponseDto> usList = searchService.searchByUserScheduleRole(username, role);
                     model.addAttribute("usRoleList", usList);
-                    return "home";
+                    return "userschedule";
                 } else {
                     model.addAttribute("error", "role 값이 옳지 않습니다");
                     return "error";
