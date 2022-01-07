@@ -11,12 +11,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
-@RestController
+@Controller
 @RequestMapping("/group")
 @RequiredArgsConstructor
 public class RoomController {
@@ -29,39 +31,43 @@ public class RoomController {
 //    protected final PasswordEncoder passwordEncoder;
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> selectTeam(@PathVariable String username){
+    public String selectTeam(@PathVariable String username, Model model){
         List<Room> roomList = roomService.findByUsername(username);
 
         if(roomList.isEmpty()){
-            return ResponseEntity.ok().body("데이터 없음");
+            model.addAttribute("error", "roomList가 존재하지 않습니다");
+            return "error";
         }
-        return  ResponseEntity.ok(roomList);
+        model.addAttribute("roomList", roomList);
+        return  "home";
     }
 
     @GetMapping("/teamId/{teamId}")
-    public ResponseEntity<?> selectUser(@PathVariable String teamId){
+    public String selectUser(@PathVariable String teamId, Model model){
         List<Room> roomList = roomService.findByTeamId(teamId);
         if(roomList.isEmpty()){
-            return ResponseEntity.ok().body("데이터 없음");
+            model.addAttribute("error", "room 데이터 없음");
+            return "error";
         }
-        return ResponseEntity.ok(roomList);
+        model.addAttribute("roomList", roomList);
+        return "home";
     }
 
     @DeleteMapping("/exit/{username}/{teamId}")
-    public ResponseEntity<?> delete(@PathVariable String username, @PathVariable String teamId){
+    public String delete(@PathVariable String username, @PathVariable String teamId, Model model){
         Room room = roomService.findByUsernameAndTeamId(username, teamId);
 
         if(room.getId() == null){
-            return ResponseEntity.status(200).body("데이터 없음");
+            model.addAttribute("error", "해당 room은 존재하지 않습니다");
         }
         roomService.delete(room.getId());
-        return ResponseEntity.status(200).body("삭제완료");
+        return "redirect:/";
     }
 
     @PostMapping("/join")
-    public ResponseEntity<?> joinRoom(@RequestBody Room room){
+    public String joinRoom(@RequestBody Room room){
         roomService.insert(room);
-        return ResponseEntity.status(200).body(room);
+        return "redirect:/";
     }
 
     /**
@@ -75,7 +81,7 @@ public class RoomController {
      * url 경로 이름 수정해야함 (RoomController)
      */
     @GetMapping("/search/team")
-    public ResponseEntity<?> searchTeam(@RequestParam(value="title", required = false) String title){
+    public String searchTeam(@RequestParam(value="title", required = false) String title, Model model){
 
         List<SearchTeamResponseDto> teamList;
         if(title != null){
@@ -83,19 +89,22 @@ public class RoomController {
             teamList.addAll(0,searchService.searchByTeamTitle(title));
 
             if(teamList.isEmpty()){
-                return ResponseEntity.badRequest().body(title + "은 존재하지 않는 모임");
+                model.addAttribute("error", "해당 title이 존재하지 않습니다");
+                return "error";
             }
         } else {
-            return ResponseEntity.badRequest().body("검색어를 입력해주세요");
+            model.addAttribute("error", "검색어를 입력하지 않았습니다");
+            return "error";
         }
-        return ResponseEntity.ok(teamList);
+        model.addAttribute("teamList", teamList);
+        return "home";
     }
     /**
      * 새로운 팀 입장시 비밀번호 확인 method
      * url 경로 수정 필요
      */
     @PostMapping("/test3")
-    public ResponseEntity<?> searchPassword(@RequestParam(value = "teamId", required = false) String teamId,
+    public String searchPassword(@RequestParam(value = "teamId", required = false) String teamId,
                                             @RequestParam(value = "password", required = false) String password){
         //log.debug(teamService.findById(teamId).get().getPassword());
         //log.debug(password);
@@ -104,6 +113,6 @@ public class RoomController {
 //        if(!passwordEncoder.matches(password, responseDto.getPassword())){
 //            return ResponseEntity.badRequest().body("비밀번호 불일치");
 //        }
-        return ResponseEntity.ok().body("비밀번호 일치");
+        return "redirect:/";
     }
 }

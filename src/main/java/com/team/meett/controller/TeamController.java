@@ -2,6 +2,7 @@ package com.team.meett.controller;
 
 import com.team.meett.dto.TeamRequestDto;
 import com.team.meett.dto.TeamResponseDto;
+import com.team.meett.repository.RoomRepository;
 import com.team.meett.service.SearchService;
 import com.team.meett.service.TeamService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Slf4j
-@RestController
 @RequiredArgsConstructor
 public class TeamController {
 
@@ -19,22 +19,22 @@ public class TeamController {
     protected final SearchService searchService;
 
     @PostMapping("/team/create")
-    public TeamRequestDto teamCreate(@RequestBody TeamRequestDto team) {
+    public String teamCreate(@RequestBody TeamRequestDto team) {
         teamService.insert(team);
-        return team; //ResponseEntity.ok().body(team);
+        return "redirect:/";
     }
 
     //update
     @PutMapping(value = "/team/{TeamId}")
-    public TeamRequestDto update(@RequestBody TeamRequestDto updateTeam, @PathVariable String TeamId) {
+    public String update(@RequestBody TeamRequestDto updateTeam, @PathVariable String TeamId) {
         teamService.update(updateTeam, TeamId);
-        return updateTeam;
+        return "redirect:/";
     }
 
     @DeleteMapping("/team/{teamId}")
-    public ResponseEntity<?> delete(@PathVariable String teamId) {
+    public String delete(@PathVariable String teamId) {
         teamService.delete(teamId);
-        return ResponseEntity.ok().body("삭제 성공");
+        return "redirect:/";
     }
 
 }
