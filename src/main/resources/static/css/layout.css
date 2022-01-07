@@ -1,0 +1,90 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+div, section, header {
+    border: 1px solid red;
+}
+
+.mainFloat {
+    background-color: white;
+    display: flex;
+    margin: 50px 100px auto;
+    height: 85vh;
+    border-radius: 15px;
+}
+
+.sideBar {
+    flex: 1;
+    background-color: #1a183c;
+    color: white;
+    border-radius: 15px 0 0 15px;
+}
+
+.sideBar nav {
+    margin: 10px;
+}
+
+.sideBar .sideBtn {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sideBar .sideBtn button {
+    width: 220px !important;
+}
+
+.headAndContent {
+    flex: 4;
+}
+
+.headAndContent header {
+    height: 10%;
+    display: flex;
+    border-radius: 0 15px 0 0;
+    border: 1px solid #ddd;
+}
+
+.headAndContent header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.headAndContent header div:nth-of-type(2) {
+    margin-left: auto;
+}
+
+.headAndContent header div button, .sideBar button {
+    width: 100px;
+    height: 37px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    background-color: #6e64fb;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.headAndContent header div button:hover {
+    background: rgb(110, 100, 251);
+    background: radial-gradient(
+            circle,
+            rgba(110, 100, 251, 1) 0%,
+            rgba(215, 78, 249, 1) 100%
+    );
+}
+
+.headAndContent .content {
+    height: 90%;
+    border-radius: 0 0 15px 0;
+    background-color: #eee;
+}

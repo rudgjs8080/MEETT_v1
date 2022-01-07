@@ -1,12 +1,10 @@
 <html lang="ko"
-      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="~{/layout}"
+      layout:decorate="~{layout.html}"
 >
-
-<section layout:fragment="content">
-<h1>home!</h1>
-<button><a th:onclick="|location.href='@{/user/logout}'|">logout</a></button>
+<section class="content" layout:fragment="content">
+    <h1>Room List</h1>
 </section>
 
 </html>

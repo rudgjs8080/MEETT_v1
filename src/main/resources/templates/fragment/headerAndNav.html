@@ -1,16 +1,16 @@
 
 
 <header th:fragment="headerFragment">
-    <p>MEETT</p>
-    <p>USER</p>
-    <button>LogOut</button>
+    <div><h2>MEETT</h2></div>
+    <div>USER</div>
+    <div><button><a th:onclick="|location.href='@{/user/logout}'|">logout</a></button></div>
 </header>
 
 
 <div class="sideBar" th:fragment="sideBarFragment">
-    <button>+ CREATE TEAM</button>
+    <div class="sideBtn"><button>+ CREATE TEAM</button></div>
     <nav>
-    <div class="menuToggle">참여중인 TEAM</div>
+    <div class="menuToggle"> > 참여중인 TEAM</div>
         <ul>
             <li>TEAM1</li>
             <li>TEAM2</li>
