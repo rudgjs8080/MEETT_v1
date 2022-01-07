@@ -3,10 +3,10 @@ server:
     context-path: /meett
 
 spring:
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    cache: false
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    cache: false
 
   mvc:
     static-path-pattern: /static/**
