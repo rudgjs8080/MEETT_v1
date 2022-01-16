@@ -4,7 +4,15 @@
       layout:decorate="~{layout.html}"
 >
 <section class="content" layout:fragment="content">
-    <h1>Room List</h1>
+    <div class="roomLayout">
+    <p>Room List</p>
+        <div class="roomList">
+            <div class="roomBox" th:each="room : ${ROOMS}">
+                <p th:text="${room.title}"></p>
+                <p th:text="${room.username}"></p>
+            </div>
+        </div>
+    </div>
 </section>
 
 </html>

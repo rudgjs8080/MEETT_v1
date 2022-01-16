@@ -1,6 +1,8 @@
 package com.team.meett.controller;
 
+import com.team.meett.dto.TeamResponseDto;
 import com.team.meett.dto.UserRequestDto;
+import com.team.meett.service.TeamService;
 import com.team.meett.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpSession;
 public class FirstPageController {
 
     protected final UserService userService;
+    protected final TeamService teamService;
 
     @GetMapping("/")
     public String firstPage(){
@@ -42,8 +46,12 @@ public class FirstPageController {
     }
 
     @GetMapping("/home")
-    public String home(HttpSession session){
+    public String home(HttpSession session, Model model){
         log.debug("session : {}", session.getId());
+
+        List<TeamResponseDto> teamList = teamService.selectAll();
+        model.addAttribute("ROOMS", teamList);
+
         return "home";
     }
 }

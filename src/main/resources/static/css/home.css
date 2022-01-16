@@ -1,0 +1,33 @@
+.roomLayout {
+    border: 1px solid red;
+    padding: 10px 15px;
+}
+
+.roomList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roomBox {
+    border: 3px solid #6e64fb;
+    background-color: #e9e7fc;
+    width: 200px;
+    margin: 20px auto;
+    padding: 5px;
+    border-radius: 10px;
+
+    color: #383737;
+    text-align: right;
+    font-size: 12px;
+}
+
+.roomBox p:nth-of-type(1) {
+    text-align: left;
+    font-size: 16px;
+}
+
+.roomBox:hover {
+    box-shadow: 1px 2px 3px #484756;
+    cursor: pointer;
+}
