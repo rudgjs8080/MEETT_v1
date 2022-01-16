@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tbody>
+<tr th:each="li : ${usList}">
+    <td th:text="${li.username}"></td>
+    <td th:text="${li.title}"></td>
+    <td th:text="${li.start}"></td>
+    <td th:text="${li.detail}"></td>
+</tr>
+<tr th:each="li : ${usDateList}">
+    <td th:text="${li.username}"></td>
+    <td th:text="${li.title}"></td>
+    <td th:text="${li.start}"></td>
+    <td th:text="${li.detail}"></td>
+</tr>
+<tr th:each="li : ${usRoleList}">
+    <td th:text="${li.username}"></td>
+    <td th:text="${li.title}"></td>
+    <td th:text="${li.start}"></td>
+    <td th:text="${li.detail}"></td>
+</tr>
+</tbody>
+</body>
+</html>

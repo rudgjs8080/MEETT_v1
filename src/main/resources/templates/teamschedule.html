@@ -1,0 +1,47 @@
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}"
+>
+<section class="content" layout:fragment="content">
+    <h1>teamschedule</h1>
+    <div>검색어 : <input type="text" placeholder="검색어를 입력하세요"/> <button type=""> 검색</button></div>
+    <table>
+    <thead>
+    <tr>
+        <th>이름</th>
+        <th>날짜</th>
+        <th>제목</th>
+        <th>상세내용</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="li : ${tsList}">
+        <td th:text="${li.username}"></td>
+        <td th:text="${li.title}"></td>
+        <td th:text="${li.start}"></td>
+        <td th:text="${li.detail}"></td>
+    </tr>
+    <tr th:each="li : ${tsDetailList}">
+        <td th:text="${li.username}"></td>
+        <td th:text="${li.title}"></td>
+        <td th:text="${li.start}"></td>
+        <td th:text="${li.detail}"></td>
+    </tr>
+    <tr th:each="li : ${tsDateList}">
+        <td th:text="${li.username}"></td>
+        <td th:text="${li.title}"></td>
+        <td th:text="${li.start}"></td>
+        <td th:text="${li.detail}"></td>
+    </tr>
+    <tr th:each="li : ${tsRoleList}">
+        <td th:text="${li.username}"></td>
+        <td th:text="${li.title}"></td>
+        <td th:text="${li.start}"></td>
+        <td th:text="${li.detail}"></td>
+    </tr>
+    </tbody>
+    </table>
+</section>
+
+</html>
