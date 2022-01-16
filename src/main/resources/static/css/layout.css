@@ -8,7 +8,7 @@
 }
 
 div, section, header {
-    border: 1px solid red;
+    /*border: 1px solid red;*/
 }
 
 .mainFloat {
@@ -19,6 +19,7 @@ div, section, header {
     border-radius: 15px;
 }
 
+/* 사이드바 css */
 .sideBar {
     flex: 1;
     background-color: #1a183c;
@@ -27,7 +28,23 @@ div, section, header {
 }
 
 .sideBar nav {
-    margin: 10px;
+    margin: 20px;
+    display: block;
+    position: relative;
+}
+
+.sideBar nav ul {
+    position: absolute;
+    left: 18%;
+    list-style-type: "💎";
+    display: block;
+    width: 82%;
+    /*visibility: hidden;*/
+    /*    드롭다운 메뉴 만들예정*/
+}
+
+.sideBar nav ul li {
+    margin: 5px auto;
 }
 
 .sideBar .sideBtn {
@@ -36,10 +53,23 @@ div, section, header {
     justify-content: center;
     align-items: center;
 }
+
 .sideBar .sideBtn button {
     width: 220px !important;
 }
 
+.sideBar .menuToggle {
+    display: block;
+    align-items: center;
+}
+
+.sideBar .menuToggle img {
+    width: 15px;
+    margin: auto 5px;
+}
+
+
+/* header와 content css*/
 .headAndContent {
     flex: 4;
 }
@@ -57,6 +87,11 @@ div, section, header {
     align-items: center;
 
     padding: 10px;
+}
+
+.headAndContent header div:nth-of-type(1) {
+    font-size: 18px;
+    margin-left: 10px;
 }
 
 .headAndContent header div:nth-of-type(2) {

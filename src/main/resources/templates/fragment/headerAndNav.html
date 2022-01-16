@@ -1,7 +1,7 @@
 
 
 <header th:fragment="headerFragment">
-    <div><h2>MEETT</h2></div>
+    <div>💜MEETT💜</div>
     <div>USER</div>
     <div><button><a th:onclick="|location.href='@{/user/logout}'|">logout</a></button></div>
 </header>
@@ -10,10 +10,15 @@
 <div class="sideBar" th:fragment="sideBarFragment">
     <div class="sideBtn"><button>+ CREATE TEAM</button></div>
     <nav>
-    <div class="menuToggle"> > 참여중인 TEAM</div>
+        <div class="menuToggle"> <img th:src="@{/static/img/arrow-right.png}" alt="main" src=""/> 참여중인 TEAM</div>
         <ul>
             <li>TEAM1</li>
             <li>TEAM2</li>
+            <li>TEAM3</li>
+            <li>TEAM4</li>
+            <li>TEAM5</li>
+            <li>TEAM6</li>
+            <li>TEAM7</li>
         </ul>
     </nav>
 </div>
