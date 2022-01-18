@@ -5,9 +5,9 @@
 >
 <section class="content" layout:fragment="content">
     <div class="roomLayout">
-    <p>Room List</p>
+        <p>Room List</p>
         <div class="roomList">
-            <div class="roomBox" th:each="room : ${ROOMS}">
+            <div class="roomBox" th:each="room: ${ROOMS}">
                 <p th:text="${room.title}"></p>
                 <p th:text="${room.username}"></p>
             </div>
