@@ -1,19 +1,23 @@
 .roomLayout {
     border: 1px solid red;
     padding: 10px 15px;
+    /*max-width: 1080px;*/
+
 }
 
 .roomList {
     display: flex;
     justify-content: center;
     align-items: center;
+    /*화면에 맞게 줄바꿈*/
+    flex-wrap: wrap;
 }
 
 .roomBox {
     border: 3px solid #6e64fb;
     background-color: #e9e7fc;
     width: 200px;
-    margin: 20px auto;
+    margin: 20px 20px;
     padding: 5px;
     border-radius: 10px;
 
