@@ -10,11 +10,7 @@ import java.util.List;
 public interface TeamRepository extends JpaRepository<Team, String> {
 
     public List<Team> findByTitle(String title);
-
     public List<Team> findByTitleContains(String title);
-
     public Team findByPassword(String teamId);
-
-
 }
 

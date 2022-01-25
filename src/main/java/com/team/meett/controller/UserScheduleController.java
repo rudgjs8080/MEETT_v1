@@ -16,19 +16,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
+//@CrossOrigin(origins = "http://localhost:3000")
 @Slf4j
 @Controller
 @RequestMapping("/schedule")
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "http://localhost:3000")
 public class UserScheduleController {
 
     protected final UserScheduleService UsService;
     protected final UserService userService;
     protected final SearchService searchService;
 
-    //    select findByUsername
+    // user의 일정List 생성
     @GetMapping("/user/{username}")
     public String selectUsername(@PathVariable String username, Model model) {
 
@@ -40,6 +39,7 @@ public class UserScheduleController {
         model.addAttribute("usList", UsList);
         return "userschedule";
     }
+
     /**
      * 지정한 날짜를 통해 현재 페이지의 유저의 일정을 조회하는 method
      * 날짜 하루를 조회하려면 start 와 end를 같은 값으로 보내줘야함 ex) start = 2021-12-23, end = 2021-12-23
@@ -102,17 +102,14 @@ public class UserScheduleController {
         return "redirect:/schedule/user";
     }
 
-    //    update
     @PutMapping("/user/{seq}")
     public String update(@RequestBody UsRequestDto updateUserSchedule, @PathVariable Long seq) {
         UsService.update(updateUserSchedule, seq);
         return "redirect:/schedule/user";
     }
 
-    //    delete
     @DeleteMapping("/user/{seq}")
     public String delete(@PathVariable Long seq) {
-
         UsService.delete(seq);
         return "redirect:/schedule/user";
     }
