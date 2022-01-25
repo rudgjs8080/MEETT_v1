@@ -28,8 +28,6 @@ public class SearchServiceImplV1 implements SearchService {
     private final TeamRepository teamRepository;
     private final TeamScheduleRepository teamScheduleRepository;
     private final UserScheduleRepository userScheduleRepository;
-
-
     // Team의 Title 유사 검색
     @Override
     public List<SearchTeamResponseDto> searchByContainTeamTitle(String title) {
@@ -42,7 +40,6 @@ public class SearchServiceImplV1 implements SearchService {
 
     @Override
     public List<SearchTeamResponseDto> searchByTeamTitle(String title) {
-
         return teamRepository.findByTitle(title).stream().map(SearchTeamResponseDto::new).collect(Collectors.toList());
     }
 

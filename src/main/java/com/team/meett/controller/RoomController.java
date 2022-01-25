@@ -28,12 +28,10 @@ public class RoomController {
     protected final TeamService teamService;
     protected final UserService userService;
 
-//    protected final PasswordEncoder passwordEncoder;
-
+    // user가 속한 모임리스트 생성
     @GetMapping("/{username}")
     public String selectTeam(@PathVariable String username, Model model){
         List<Room> roomList = roomService.findByUsername(username);
-
         if(roomList.isEmpty()){
             model.addAttribute("error", "roomList가 존재하지 않습니다");
             return "error";
@@ -42,6 +40,7 @@ public class RoomController {
         return  "home";
     }
 
+    // 모임에 속한 유저리스트 생성
     @GetMapping("/teamId/{teamId}")
     public String selectUser(@PathVariable String teamId, Model model){
         List<Room> roomList = roomService.findByTeamId(teamId);

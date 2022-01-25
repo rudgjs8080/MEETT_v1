@@ -14,6 +14,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Entity
 @Table(name = "tbl_schedule", schema = "MeettDB")
 public class UserSchedule {
